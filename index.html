@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haber Sitesi - Navbar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background: #ff2d1a;
+      /* Koyu renk */
+    }
+
+
+
+    .navbar-nav .nav-link {
+      color: #f8f9fa !important;
+      font-weight: 500;
+      padding: 8px 15px;
+      font-size: 21px;
+      transition: 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffc107 !important;
+      /* Sarı hover efekti */
+    }
+
+    .search-input {
+      border-radius: 20px;
+      padding: 5px 15px;
+    }
+
+    .btn-search {
+      border-radius: 20px;
+      padding: 5px 15px;
+    }
+
+    .navbar-brand {
+      font-size: 35px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand text-warning fw-bold " href="#">📰 HaberimVar</a>
+
+      <!-- Mobile Menu Button -->
+      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menü -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Kategoriler -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Anasayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Gündem</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Spor</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ekonomi</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Teknoloji</a></li>
+        </ul>
+
+        <!-- Arama Kutusu -->
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 search-input" type="search" placeholder="Haber ara..." aria-label="Search">
+          <button class="btn btn-outline-warning btn-search" type="submit">Ara</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================== GELİŞMİŞ PİYASA TİCKER ================== -->
+  <div class="ticker-wrapper">
+    <div class="ticker" id="ticker">
+      <div class="ticker-item">💵 USD/TRY: 41.58 ₺</div>
+      <div class="ticker-item">💶 EUR/TRY: 48.84 ₺</div>
+      <div class="ticker-item">💷 GBP/TRY: 55.94 ₺</div>
+      <div class="ticker-item">💰 Gram Altın: 1,581 ₺</div>
+      <div class="ticker-item">🥇 Çeyrek Altın: 2,520 ₺</div>
+      <div class="ticker-item">💎 Gümüş: 18.50 ₺</div>
+      <div class="ticker-item">₿ Bitcoin: 33,200 $</div>
+      <div class="ticker-item">Ξ Ethereum: 2,200 $</div>
+    </div>
+  </div>
+
+  <style>
+    .ticker-wrapper {
+      width: 100%;
+      padding: 1%;
+      overflow: hidden;
+      background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
+      border-top: 2px solid #f5b50a;
+      border-bottom: 2px solid #f5b50a;
+    }
+
+    .ticker {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerAnim 25s linear infinite;
+    }
+
+    .ticker:hover {
+      animation-play-state: paused;
+      /* Hoverda durur */
+    }
+
+    .ticker-item {
+      padding: 0 50px;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @keyframes tickerAnim {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* İcon renklendirme örneği */
+    .ticker-item:nth-child(1) {
+      color: #00ffea;
+    }
+
+    /* USD */
+    .ticker-item:nth-child(2) {
+      color: #ffdd00;
+    }
+
+    /* EUR */
+    .ticker-item:nth-child(3) {
+      color: #ff6a00;
+    }
+
+    /* GBP */
+    .ticker-item:nth-child(4) {
+      color: #f5b50a;
+    }
+
+    /* Altın */
+    .ticker-item:nth-child(5) {
+      color: #ffc107;
+    }
+
+    /* Çeyrek Altın */
+    .ticker-item:nth-child(6) {
+      color: #b0c4de;
+    }
+
+    /* Gümüş */
+    .ticker-item:nth-child(7) {
+      color: #f7931a;
+    }
+
+    /* Bitcoin */
+    .ticker-item:nth-child(8) {
+      color: #3c3c3d;
+    }
+
+    /* Ethereum */
+  </style>
+
+  <script>
+    // Örnek: JS ile ticker verilerini dinamik değiştirmek için
+    const tickerData = [
+      { icon: "💵", name: "USD/TRY", value: "41.58 ₺" },
+      { icon: "💶", name: "EUR/TRY", value: "48.84 ₺" },
+      { icon: "💷", name: "GBP/TRY", value: "55.94 ₺" },
+      { icon: "💰", name: "Gram Altın", value: "1,581 ₺" },
+      { icon: "🥇", name: "Çeyrek Altın", value: "2,520 ₺" },
+      { icon: "💎", name: "Gümüş", value: "18.50 ₺" },
+      { icon: "₿", name: "Bitcoin", value: "33,200 $" },
+      { icon: "Ξ", name: "Ethereum", value: "2,200 $" }
+    ];
+
+    const ticker = document.getElementById("ticker");
+
+    // Her 10 saniyede verileri rastgele güncelle (simülasyon)
+    setInterval(() => {
+      tickerData.forEach((item, index) => {
+        let randomChange = (Math.random() * 0.5 - 0.25).toFixed(2);
+        ticker.children[index].textContent = `${item.icon} ${item.name}: ${parseFloat(item.value.replace(/[^\d.]/g, '')) + parseFloat(randomChange)} ${item.value.replace(/[\d., ]/g, '')}`;
+      });
+    }, 10000);
+  </script>
+  <!-- Kayan Küçük Reklam -->
+  <div id="scroll-ad">
+    <button id="close-scroll-ad">×</button>
+    <h4>Reklam Alanı</h4>
+    <p>Buraya reklam ekleyebilirsiniz.</p>
+  </div>
+
+  <style>
+    /* Başlangıçta küçük reklam */
+    #scroll-ad {
+      position: fixed;
+      bottom: 20px;
+      /* ekranın altından */
+      right: 20px;
+      /* sağ alt köşe */
+      width: 350px;
+      /* küçük boyut */
+      height: 180px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      transition: all 0.5s ease;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0;
+      /* başta görünmez */
+    }
+
+    /* Reklam tıklandığında büyüsün */
+    #scroll-ad.expanded {
+      width: 300px;
+      height: 300px;
+      bottom: 50%;
+      right: 50%;
+      transform: translate(50%, 50%);
+    }
+
+    /* Kapatma butonu */
+    #close-scroll-ad {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+    }
+  </style>
+
+  <script>
+    // Scroll ile reklamı göster
+    window.addEventListener('scroll', function () {
+      const ad = document.getElementById('scroll-ad');
+      if (window.scrollY > window.innerHeight / 2) { // ekranın yarısını geçince
+        ad.style.opacity = 1;
+      }
+    });
+
+    // Reklama tıklandığında büyüt
+    document.getElementById('scroll-ad').addEventListener('click', function () {
+      this.classList.add('expanded');
+    });
+
+    // Kapatma butonu
+    document.getElementById('close-scroll-ad').addEventListener('click', function (e) {
+      e.stopPropagation(); // reklam tıklanmasını engelle
+      const ad = document.getElementById('scroll-ad');
+      ad.style.opacity = 0;
+      ad.classList.remove('expanded');
+    });
+  </script>
+
+  <!-- Anasayfa Slider + Reklam Alanları -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+
+      <!-- Sol Reklam -->
+      <div class="col-md-2 d-none d-md-block">
+        <div class="ad-box">Reklam Alanı</div>
+      </div>
+
+      <!-- Slider -->
+      <div class="col-md-8">
+        <div id="haberSlider" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <!-- Haber 1 -->
+            <div class="carousel-item active">
+              <img src="https://picsum.photos/1000/500?random=1" class="d-block w-100" alt="haber1">
+              <div class="carousel-caption">
+                <h5>Son Dakika: Önemli Haber 1</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 2 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=2" class="d-block w-100" alt="haber2">
+              <div class="carousel-caption">
+                <h5>Gündem: Haber Başlığı 2</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 3 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=3" class="d-block w-100" alt="haber3">
+              <div class="carousel-caption">
+                <h5>Spor: Haber Başlığı 3</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 4 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=4" class="d-block w-100" alt="haber4">
+              <div class="carousel-caption">
+                <h5>Ekonomi: Haber Başlığı 4</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 5 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=5" class="d-block w-100" alt="haber5">
+              <div class="carousel-caption">
+                <h5>Teknoloji: Haber Başlığı 5</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 6 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=6" class="d-block w-100" alt="haber6">
+              <div class="carousel-caption">
+                <h5>Haber Başlığı 6</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 7 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=7" class="d-block w-100" alt="haber7">
+              <div class="carousel-caption">
+                <h5>Haber Başlığı 7</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 8 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=8" class="d-block w-100" alt="haber8">
+              <div class="carousel-caption">
+                <h5>Haber Başlığı 8</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 9 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=9" class="d-block w-100" alt="haber9">
+              <div class="carousel-caption">
+                <h5>Haber Başlığı 9</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+            <!-- Haber 10 -->
+            <div class="carousel-item">
+              <img src="https://picsum.photos/1000/500?random=10" class="d-block w-100" alt="haber10">
+              <div class="carousel-caption">
+                <h5>Haber Başlığı 10</h5>
+                <p>Kısa açıklama buraya...</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Slider Kontroller -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#haberSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#haberSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sağ Reklam -->
+      <div class="col-md-2 d-none d-md-block">
+        <div class="ad-box">Reklam Alanı</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stil -->
+  <style>
+    .ad-box {
+      background: #f1f1f1;
+      border: 1px dashed #aaa;
+      height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #555;
+      font-weight: bold;
+    }
+
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 10px;
+    }
+  </style>
+
+  <!-- ================== KATEGORİ SAYFASI (SPOR) ================== -->
+
+  <script>
+    fetch('https://api.exchangerate-api.com/v4/latest/USD')
+      .then(response => response.json())
+      .then(data => {
+        const usdTry = data.rates.TRY;
+        document.getElementById('usd-try').textContent = `1 USD = ${usdTry} TRY`;
+      });
+
+  </script>
+
+  <div style="display:flex; justify-content:center; margin:20px 0; margin: 0 auto;padding: 4%;
+">
+    <iframe
+      src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_12345&symbol=USDTRY&interval=D&hidesidetoolbar=1&hidetoptoolbar=1&saveimage=1&toolbarbg=F1F3F6&studies=MACD,RSI"
+      width="90%" height="500" frameborder="0" allowtransparency="true" scrolling="no">
+    </iframe>
+  </div>
+
+
+  <!-- ================== /KATEGORİ SAYFASI ================== -->
+
+
+  </div>
+  <!-- ================== KATEGORİ SAYFASI (HABER KARTLARI) ================== -->
+
+  <!-- ================== HABER KARTLARI ================== -->
+   <style>
+    .kartlar{
+      margin:17px;
+    }
+   </style>
+  <div class="container my-5">
+    <div class="row g-3 kartlar ">
+
+      <!-- Kart 1 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=701" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Derbi Heyecanı Başlıyor</h6>
+            <p class="card-text small text-muted">Süper Lig’de derbi heyecanı başladı...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kart 2 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=702" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Yapay Zeka Yeni Bir Dönem Açtı</h6>
+            <p class="card-text small text-muted">Yapay zeka sağlık sektöründe kullanılmaya başlandı...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kart 3 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=703" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Altın Fiyatları Rekor Kırdı</h6>
+            <p class="card-text small text-muted">Altın piyasalarda tarihi zirvesini gördü...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kart 4 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=704" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Mars’ta Yeni Keşif</h6>
+            <p class="card-text small text-muted">NASA, Mars’ta yeni mineral bulduğunu açıkladı...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div>
+      <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div> <!-- Kart 5 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=705" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Kripto Piyasası Çalkalanıyor</h6>
+            <p class="card-text small text-muted">Bitcoin son 24 saatte %5 değer kaybetti...</p>
+          </div>
+        </div>
+      </div>
+      <!-- Kart 6 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=706" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Ekonomide Yeni Adımlar</h6>
+            <p class="card-text small text-muted">Hükümet ekonomik reform paketini açıkladı...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stil -->
+  <style>
+    .news-card-small {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .news-card-small:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-card-small img {
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .news-card-small:hover img {
+      transform: scale(1.05);
+    }
+
+    .news-card-small .card-body {
+      padding: 10px 12px;
+    }
+
+    .news-card-small .card-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .news-card-small .card-text {
+      font-size: 12px;
+      margin: 0;
+    }
+  </style>
+  <!-- ================== HABER KARTLARI ================== -->
+  <div class="container my-5">
+    <div class="row g-3">
+
+      <!-- Kart 1 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card news-card-small h-100">
+          <img src="https://picsum.photos/300/150?random=701" class="card-img-top" alt="Haber">
+          <div class="card-body">
+            <h6 class="card-title">Derbi Heyecanı Başlıyor</h6>
+            <p class="card-text small text-muted">Süper Lig’de derbi heyecanı başladı...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ... diğer kartlar ... -->
+
+    </div>
+  </div>
+  <style>
+    .category-block {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .category-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Grid yapısı */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    /* Sol büyük haber kartı */
+    .main-news {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .main-news:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .main-news img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .main-news:hover img {
+      transform: scale(1.05);
+    }
+
+    .main-news h2 {
+      font-size: 1.3rem;
+      padding: 15px 20px;
+      margin: 0;
+    }
+
+    /* Sağ küçük haberler */
+    .side-news {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .side-news .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .side-news .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .side-news .card img {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .side-news .card h3 {
+      font-size: 1rem;
+      padding-right: 10px;
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-news img {
+        height: 220px;
+      }
+
+      .side-news {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .side-news .card {
+        flex: 0 0 45%;
+        flex-direction: column;
+        min-width: 180px;
+      }
+
+      .side-news .card img {
+        width: 100%;
+        height: 140px;
+      }
+    }
+  </style>
+  </head>
+
+  <body>
+
+    <!-- Magazin Kategorisi -->
+    <div class="category-block">
+      <div class="category-title">📰 Magazin</div>
+      <div class="news-grid">
+
+        <!-- Sol Büyük Haber -->
+        <div class="main-news">
+          <img src="https://via.placeholder.com/600x320" alt="">
+          <h2>Ünlü oyuncunun yeni dizisi reyting rekoru kırdı</h2>
+        </div>
+
+        <!-- Sağ İki Küçük Haber -->
+        <div class="side-news">
+          <div class="card">
+            <img src="https://via.placeholder.com/150x90" alt="">
+            <h3>Şarkıcıdan sürpriz açıklama: Evlilik hazırlığı yapıyorum</h3>
+          </div>
+          <div class="card">
+            <img src="https://via.placeholder.com/150x90" alt="">
+            <h3>Ünlü manken Paris defilesinde podyuma çıktı</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      .category-block {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .category-title {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #ff416c, #ff4b2b);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Grid yapısı */
+      .news-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+      }
+
+      /* Sol büyük haber kartı */
+      .main-news {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .main-news:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .main-news img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .main-news:hover img {
+        transform: scale(1.05);
+      }
+
+      .main-news h2 {
+        font-size: 1.3rem;
+        padding: 15px 20px;
+        margin: 0;
+      }
+
+      /* Sağ küçük haberler */
+      .side-news {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .side-news .card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .side-news .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .side-news .card img {
+        width: 120px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .side-news .card h3 {
+        font-size: 1rem;
+        padding-right: 10px;
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .main-news img {
+          height: 220px;
+        }
+
+        .side-news {
+          flex-direction: row;
+          overflow-x: auto;
+        }
+
+        .side-news .card {
+          flex: 0 0 45%;
+          flex-direction: column;
+          min-width: 180px;
+        }
+
+        .side-news .card img {
+          width: 100%;
+          height: 140px;
+        }
+      }
+    </style>
+    </head>
+
+    <body>
+
+      <!-- Magazin Kategorisi -->
+      <div class="category-block">
+        <div class="category-title">📰 Magazin</div>
+        <div class="news-grid">
+
+          <!-- Sol Büyük Haber -->
+          <div class="main-news">
+            <img src="https://via.placeholder.com/600x320" alt="">
+            <h2>Ünlü oyuncunun yeni dizisi reyting rekoru kırdı</h2>
+          </div>
+
+          <!-- Sağ İki Küçük Haber -->
+          <div class="side-news">
+            <div class="card">
+              <img src="https://via.placeholder.com/150x90" alt="">
+              <h3>Şarkıcıdan sürpriz açıklama: Evlilik hazırlığı yapıyorum</h3>
+            </div>
+            <div class="card">
+              <img src="https://via.placeholder.com/150x90" alt="">
+              <h3>Ünlü manken Paris defilesinde podyuma çıktı</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        .category-block {
+          max-width: 1200px;
+          margin: 40px auto;
+          padding: 0 20px;
+        }
+
+        .category-title {
+          font-size: 2rem;
+          font-weight: 700;
+          background: linear-gradient(90deg, #ff416c, #ff4b2b);
+          color: white;
+          padding: 12px 20px;
+          border-radius: 10px;
+          margin-bottom: 25px;
+          display: inline-block;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Grid yapısı */
+        .news-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 20px;
+        }
+
+        /* Sol büyük haber kartı */
+        .main-news {
+          background: #fff;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-news:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-news img {
+          width: 100%;
+          height: 320px;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .main-news:hover img {
+          transform: scale(1.05);
+        }
+
+        .main-news h2 {
+          font-size: 1.3rem;
+          padding: 15px 20px;
+          margin: 0;
+        }
+
+        /* Sağ küçük haberler */
+        .side-news {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .side-news .card {
+          background: #fff;
+          border-radius: 12px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .side-news .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .side-news .card img {
+          width: 120px;
+          height: 90px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+
+        .side-news .card h3 {
+          font-size: 1rem;
+          padding-right: 10px;
+          margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .news-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .main-news img {
+            height: 220px;
+          }
+
+          .side-news {
+            flex-direction: row;
+            overflow-x: auto;
+          }
+
+          .side-news .card {
+            flex: 0 0 45%;
+            flex-direction: column;
+            min-width: 180px;
+          }
+
+          .side-news .card img {
+            width: 100%;
+            height: 140px;
+          }
+        }
+      </style>
+      </head>
+
+      <body>
+
+        <!-- Magazin Kategorisi -->
+        <div class="category-block">
+          <div class="category-title">📰 Magazin</div>
+          <div class="news-grid">
+
+            <!-- Sol Büyük Haber -->
+            <div class="main-news">
+              <img src="https://via.placeholder.com/600x320" alt="">
+              <h2>Ünlü oyuncunun yeni dizisi reyting rekoru kırdı</h2>
+            </div>
+
+            <!-- Sağ İki Küçük Haber -->
+            <div class="side-news">
+              <div class="card">
+                <img src="https://via.placeholder.com/150x90" alt="">
+                <h3>Şarkıcıdan sürpriz açıklama: Evlilik hazırlığı yapıyorum</h3>
+              </div>
+              <div class="card">
+                <img src="https://via.placeholder.com/150x90" alt="">
+                <h3>Ünlü manken Paris defilesinde podyuma çıktı</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <style>
+          /* Genel Ayarlar */
+
+          .category-block {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+          }
+
+          .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Grid yapısı */
+          .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+          }
+
+          /* Sol büyük haber kartı */
+          .main-news {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          .main-news:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+          }
+
+          .main-news img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+
+          .main-news:hover img {
+            transform: scale(1.05);
+          }
+
+          .main-news h2 {
+            font-size: 1.3rem;
+            padding: 15px 20px;
+            margin: 0;
+          }
+
+          /* Sağ küçük haberler */
+          .side-news {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .side-news .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          .side-news .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+          }
+
+          .side-news .card img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+
+          .side-news .card h3 {
+            font-size: 1rem;
+            padding-right: 10px;
+            margin: 0;
+          }
+
+          /* Responsive */
+          @media (max-width: 768px) {
+            .news-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .main-news img {
+              height: 220px;
+            }
+
+            .side-news {
+              flex-direction: row;
+              overflow-x: auto;
+            }
+
+            .side-news .card {
+              flex: 0 0 45%;
+              flex-direction: column;
+              min-width: 180px;
+            }
+
+            .side-news .card img {
+              width: 100%;
+              height: 140px;
+            }
+          }
+        </style>
+        </head>
+
+        <body>
+
+          <!-- Magazin Kategorisi -->
+          <div class="category-block">
+            <div class="category-title">📰 Magazin</div>
+            <div class="news-grid">
+
+              <!-- Sol Büyük Haber -->
+              <div class="main-news">
+                <img src="https://via.placeholder.com/600x320" alt="">
+                <h2>Ünlü oyuncunun yeni dizisi reyting rekoru kırdı</h2>
+              </div>
+
+              <!-- Sağ İki Küçük Haber -->
+              <div class="side-news">
+                <div class="card">
+                  <img src="https://via.placeholder.com/150x90" alt="">
+                  <h3>Şarkıcıdan sürpriz açıklama: Evlilik hazırlığı yapıyorum</h3>
+                </div>
+                <div class="card">
+                  <img src="https://via.placeholder.com/150x90" alt="">
+                  <h3>Ünlü manken Paris defilesinde podyuma çıktı</h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </body>
+
+</html>
+
+<!-- ================== REKLAM ALANI ================== -->
+<div class="container my-4">
+  <div class="ad-banner text-center">
+    <a href="#">
+      <img src="https://via.placeholder.com/970x90.png?text=Reklam+Alanı" alt="Reklam" class="img-fluid">
+    </a>
+  </div>
+</div>
+
+<!-- Stil -->
+<style>
+  .news-card-small {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .news-card-small:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .news-card-small img {
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .news-card-small:hover img {
+    transform: scale(1.05);
+  }
+
+  .news-card-small .card-body {
+    padding: 10px 12px;
+  }
+
+  .news-card-small .card-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .news-card-small .card-text {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  /* Reklam Alanı */
+  .ad-banner {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .ad-banner img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+
+
+<!-- ================== FOOTER ================== -->
+<footer class="footer text-dark mt-5">
+  <div class="container py-5">
+    <div class="row gy-4">
+
+      <!-- Logo & Açıklama -->
+      <div class="col-lg-3 col-md-6">
+        <h4 class="fw-bold text-primary">HaberimVar</h4>
+        <p class="small mt-3 text-muted">
+          Tarafsız, güncel ve güvenilir haberler için Türkiye’nin en çok okunan haber sitesi.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Hızlı Linkler -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="fw-bold text-uppercase">Hızlı Linkler</h6>
+        <ul class="list-unstyled small mt-3">
+          <li><a href="#">Anasayfa</a></li>
+          <li><a href="#">Son Dakika</a></li>
+          <li><a href="#">Spor</a></li>
+          <li><a href="#">Teknoloji</a></li>
+          <li><a href="#">Ekonomi</a></li>
+          <li><a href="#">Yaşam</a></li>
+        </ul>
+      </div>
+
+      <!-- Popüler Kategoriler -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="fw-bold text-uppercase">Kategoriler</h6>
+        <ul class="list-unstyled small mt-3">
+          <li><a href="#">Politika</a></li>
+          <li><a href="#">Dünya</a></li>
+          <li><a href="#">Kültür & Sanat</a></li>
+          <li><a href="#">Sağlık</a></li>
+          <li><a href="#">Otomotiv</a></li>
+          <li><a href="#">Bilim</a></li>
+        </ul>
+      </div>
+
+      <!-- En Çok Okunan -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="fw-bold text-uppercase">En Çok Okunan</h6>
+        <ul class="list-unstyled small mt-3">
+          <li><a href="#">Ekonomi Krizi Büyüyor</a></li>
+          <li><a href="#">Derbi Sonucu Şaşırttı</a></li>
+          <li><a href="#">Yeni Telefon Tanıtıldı</a></li>
+          <li><a href="#">Liderlerden Zirve Kararı</a></li>
+          <li><a href="#">Sağlıkta Yeni Dönem Başladı</a></li>
+          <li><a href="#">Bilim İnsanlarından Büyük Keşif</a></li>
+        </ul>
+      </div>
+
+      <!-- Abone Ol & İletişim -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="fw-bold text-uppercase">Bültene Katıl</h6>
+        <p class="small text-muted mt-2">Günlük haberleri mail kutunda almak için abone ol.</p>
+        <form class="d-flex mb-3">
+          <input type="email" class="form-control form-control-sm" placeholder="E-posta adresiniz">
+          <button class="btn btn-primary btn-sm ms-2">Abone Ol</button>
+        </form>
+        <p class="small mb-1"><i class="fas fa-map-marker-alt me-2"></i> İstanbul, Türkiye</p>
+        <p class="small mb-1"><i class="fas fa-phone-alt me-2"></i> +90 555 123 45 67</p>
+        <p class="small"><i class="fas fa-envelope me-2"></i> info@haberimvar.com</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Telif Hakkı -->
+  <div class="footer-bottom text-center py-3">
+    <p class="mb-0 small text-muted">&copy; 2025 <b>HaberimVar</b> | Tüm Hakları Saklıdır |
+      <a href="#">KVKK</a> | <a href="#">Gizlilik</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  /* Footer Genel Ayarlar */
+  .footer {
+    background: #7fb283;
+    color: #ccc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 60px;
+    padding-bottom: 20px;
+  }
+
+  .footer h4,
+  .footer h6 {
+    color: #fff;
+  }
+
+  .footer a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer a:hover {
+    color: #ff416c;
+  }
+
+  .footer .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #333;
+    transition: all 0.3s;
+  }
+
+  .footer .social-icon:hover {
+    background: #ff416c;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  .footer .footer-bottom {
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    color: #888;
+  }
+
+  /* Footer kolonları */
+  .footer .col-lg-3,
+  .footer .col-lg-2 {
+    margin-bottom: 20px;
+  }
+
+  /* Listeler */
+  .footer ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer ul li a {
+    font-size: 0.9rem;
+  }
+
+  /* Form ve input */
+  .footer form input {
+    border-radius: 25px;
+    border: none;
+    padding: 5px 15px;
+  }
+
+  .footer form button {
+    border-radius: 25px;
+    padding: 5px 15px;
+    background: #ff416c;
+    border: none;
+    transition: all 0.3s;
+  }
+
+  .footer form button:hover {
+    background: #ff4b2b;
+    transform: translateY(-2px);
+  }
+
+  /* Footer bilgileri */
+  .footer p {
+    font-size: 0.85rem;
+  }
+
+  /* İkonlar */
+  .footer i {
+    color: #ff416c;
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .footer .row {
+      text-align: center;
+    }
+
+    .footer .d-flex {
+      justify-content: center;
+    }
+  }
+</style>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
